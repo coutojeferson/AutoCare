@@ -33,7 +33,6 @@ A arquitetura já está preparada para sincronização com backend — quando o 
 ### Padrão de arquitetura
 
 - `src/database/` — inicialização do banco e repositories (acesso a dados)
-- `src/viewmodels/` — custom hooks com lógica de estado de cada tela (MVVM)
 - `src/utils/` — funções puras reutilizáveis
 - `src/types/` — tipagem centralizada
 - `src/screens/` — telas da aplicação, responsáveis apenas por renderizar
