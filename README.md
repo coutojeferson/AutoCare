@@ -53,20 +53,36 @@ O status é calculado com base no KM restante para a próxima troca:
 - [Expo](https://expo.dev/)
 - [expo-sqlite](https://docs.expo.dev/versions/latest/sdk/sqlite/) — banco de dados local
 - [React Navigation](https://reactnavigation.org/) — navegação entre telas
+- [Jest](https://jestjs.io/) — testes unitários
 - [EAS Build](https://docs.expo.dev/build/introduction/) — build e deploy na nuvem
 - TypeScript
 
 ---
 
+## 🧪 Testes
+
+O projeto conta com testes unitários para as funções de `src/utils`, cobrindo:
+
+- Cálculo de KM restante e status de manutenção
+- Formatação de datas e KM
+- Filtros e ordenação de manutenções por tipo
+
+```bash
+npm test
+```
+
+---
+
 ## ⚙️ CI/CD
 
-O projeto utiliza **GitHub Actions + EAS Build** para automatizar o processo de build e publicação na Play Store.
+O projeto utiliza **GitHub Actions + EAS Build** para automatizar testes, build e publicação na Play Store.
 
-A cada push na branch `main`, o pipeline:
+O pipeline é dividido em dois jobs:
 
-1. Instala as dependências
-2. Dispara o build via EAS na nuvem
-3. Publica automaticamente na Play Store
+- **test** — roda em todo push e Pull Request para `main`. Executa os testes unitários com Jest.
+- **build** — roda apenas em push para `main`, após os testes passarem. Builda o app via EAS e publica na Play Store.
+
+Essa separação garante que código com testes quebrados nunca chegue a gerar um build.
 
 ---
 
@@ -90,8 +106,8 @@ npx expo start
 
 ## 🔮 Próximos passos
 
+- [ ] Testes de integração com SQLite
 - [ ] Backend para sincronização dos dados quando online
-- [ ] Testes unitários e de integração
 - [ ] Suporte a outros tipos de manutenção (freios, pneus, filtros)
 - [ ] Notificações locais quando a troca estiver próxima
 - [ ] Publicação na App Store
