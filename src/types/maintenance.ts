@@ -1,4 +1,4 @@
-export type MaintenanceType = 'oil_change';
+export type MaintenanceType = 'oil_change' | 'tire_rotation';
 
 export type Maintenance = {
   id: string;
